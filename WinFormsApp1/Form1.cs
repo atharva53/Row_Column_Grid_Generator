@@ -1,64 +1,20 @@
+using WinFormsApp1.Controls;
+using WinFormsApp1.Models;
+
 namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        // Simple variables to store rows and columns values
-        private int rowCount = 0;
-        private int columnCount = 0;
+        // Model instance for the form
+        private GridSettingsModel _gridSettings;
 
         public Form1()
         {
             InitializeComponent();
 
-            // Set up event handlers for text changed events
-            textBoxRows.TextChanged += TextBox_TextChanged;
-            textBoxColumns.TextChanged += TextBox_TextChanged;
-        }
-
-        // Single event handler for both textboxes
-        private void TextBox_TextChanged(object? sender, EventArgs e)
-        {
-            // Parse input values
-            bool validRows = int.TryParse(textBoxRows.Text, out int rows);
-            bool validColumns = int.TryParse(textBoxColumns.Text, out int columns);
-
-            // Only update if we have valid numbers
-            if (validRows && rows >= 0)
-                rowCount = rows;
-
-            if (validColumns && columns >= 0)
-                columnCount = columns;
-
-            // Update the grid
-            UpdateGrid();
-        }
-
-        // Method to update the grid
-        private void UpdateGrid()
-        {
-            try
-            {
-                // Clear existing grid
-                dataGridView1.Columns.Clear();
-                dataGridView1.Rows.Clear();
-
-                // Add columns
-                for (int i = 0; i < columnCount; i++)
-                {
-                    dataGridView1.Columns.Add($"col{i}", $"Column {i+1}");
-                }
-
-                // Add rows - Fixed the extra row issue
-                for (int i = 0; i < rowCount; i++)
-                {
-                    dataGridView1.Rows.Add();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error updating grid: {ex.Message}", "Error", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Create model and assign to the control
+            _gridSettings = new GridSettingsModel();
+            dynamicGridControl1.Model = _gridSettings;
         }
     }
 }

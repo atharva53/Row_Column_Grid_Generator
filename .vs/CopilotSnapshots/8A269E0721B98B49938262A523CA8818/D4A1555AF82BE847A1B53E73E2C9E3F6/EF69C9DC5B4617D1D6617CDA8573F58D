@@ -1,0 +1,108 @@
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace WinFormsApp1.Controls
+{
+    public partial class DynamicGridControl : UserControl
+    {
+        // Variables to store rows and columns values
+        private int _rowCount = 0;
+        private int _columnCount = 0;
+
+        // Properties with change notification
+        [Description("Number of rows in the grid")]
+        [Category("Grid")]
+        public int Rows
+        {
+            get => _rowCount;
+            set
+            {
+                if (_rowCount != value && value >= 0)
+                {
+                    _rowCount = value;
+                    textBoxRows.Text = value.ToString();
+                    UpdateGrid();
+                }
+            }
+        }
+
+        [Description("Number of columns in the grid")]
+        [Category("Grid")]
+        public int Columns
+        {
+            get => _columnCount;
+            set
+            {
+                if (_columnCount != value && value >= 0)
+                {
+                    _columnCount = value;
+                    textBoxColumns.Text = value.ToString();
+                    UpdateGrid();
+                }
+            }
+        }
+
+        // Constructor
+        public DynamicGridControl()
+        {
+            InitializeComponent();
+
+            // Set up event handlers
+            textBoxRows.TextChanged += TextBox_TextChanged;
+            textBoxColumns.TextChanged += TextBox_TextChanged;
+        }
+
+        // Single event handler for both textboxes
+        private void TextBox_TextChanged(object? sender, EventArgs e)
+        {
+            // Parse input values
+            bool validRows = int.TryParse(textBoxRows.Text, out int rows);
+            bool validColumns = int.TryParse(textBoxColumns.Text, out int columns);
+
+            // Only update if we have valid numbers
+            if (validRows && rows >= 0)
+                _rowCount = rows;
+
+            if (validColumns && columns >= 0)
+                _columnCount = columns;
+
+            // Update the grid
+            UpdateGrid();
+        }
+
+        // Method to update the grid
+        private void UpdateGrid()
+        {
+            try
+            {
+                // Clear existing grid
+                dataGridView1.Columns.Clear();
+                dataGridView1.Rows.Clear();
+
+                // Add columns
+                for (int i = 0; i < _columnCount; i++)
+                {
+                    dataGridView1.Columns.Add($"col{i}", $"Column {i+1}");
+                }
+
+                // Add rows
+                for (int i = 0; i < _rowCount; i++)
+                {
+                    dataGridView1.Rows.Add();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating grid: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Public method to get the DataGridView for external access if needed
+        public DataGridView GetGrid()
+        {
+            return dataGridView1;
+        }
+    }
+}

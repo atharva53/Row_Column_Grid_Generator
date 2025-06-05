@@ -1,0 +1,121 @@
+﻿namespace WinFormsApp1
+{
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.labelRows = new System.Windows.Forms.Label();
+            this.labelColumns = new System.Windows.Forms.Label();
+            this.textBoxRows = new System.Windows.Forms.TextBox();
+            this.textBoxColumns = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelInputs = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelInputs.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // labelRows
+            // 
+            this.labelRows.AutoSize = true;
+            this.labelRows.Location = new System.Drawing.Point(12, 15);
+            this.labelRows.Name = "labelRows";
+            this.labelRows.Size = new System.Drawing.Size(45, 20);
+            this.labelRows.TabIndex = 0;
+            this.labelRows.Text = "Rows:";
+            // 
+            // labelColumns
+            // 
+            this.labelColumns.AutoSize = true;
+            this.labelColumns.Location = new System.Drawing.Point(213, 15);
+            this.labelColumns.Name = "labelColumns";
+            this.labelColumns.Size = new System.Drawing.Size(67, 20);
+            this.labelColumns.TabIndex = 1;
+            this.labelColumns.Text = "Columns:";
+            // 
+            // textBoxRows
+            // 
+            this.textBoxRows.Location = new System.Drawing.Point(63, 12);
+            this.textBoxRows.Name = "textBoxRows";
+            this.textBoxRows.Size = new System.Drawing.Size(125, 27);
+            this.textBoxRows.TabIndex = 2;
+            // 
+            // textBoxColumns
+            // 
+            this.textBoxColumns.Location = new System.Drawing.Point(286, 12);
+            this.textBoxColumns.Name = "textBoxColumns";
+            this.textBoxColumns.Size = new System.Drawing.Size(125, 27);
+            this.textBoxColumns.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 50);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(800, 400);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // panelInputs
+            // 
+            this.panelInputs.Controls.Add(this.labelRows);
+            this.panelInputs.Controls.Add(this.labelColumns);
+            this.panelInputs.Controls.Add(this.textBoxColumns);
+            this.panelInputs.Controls.Add(this.textBoxRows);
+            this.panelInputs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelInputs.Location = new System.Drawing.Point(0, 0);
+            this.panelInputs.Name = "panelInputs";
+            this.panelInputs.Size = new System.Drawing.Size(800, 50);
+            this.panelInputs.TabIndex = 5;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panelInputs);
+            this.Name = "Form1";
+            this.Text = "Dynamic Grid Generator";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelInputs.ResumeLayout(false);
+            this.panelInputs.PerformLayout();
+            this.ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Label labelRows;
+        private Label labelColumns;
+        public TextBox textBoxRows;
+        public TextBox textBoxColumns;
+        public DataGridView dataGridView1;
+        private Panel panelInputs;
+    }
+}
